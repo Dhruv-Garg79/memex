@@ -16,7 +16,7 @@ class MemeService {
         } catch (errors) {
             return {
                 code: 500,
-                errors: errors.array(),
+                error: errors.array(),
             };
         }
     }
@@ -39,7 +39,7 @@ class MemeService {
         } catch (errors) {
             return {
                 code: 500,
-                errors: errors.array(),
+                error: errors.array(),
             };
         }
     }
@@ -51,7 +51,7 @@ class MemeService {
         } catch (errors) {
             return {
                 code: 500,
-                errors: errors.array(),
+                error: errors.array(),
             };
         }
     }
@@ -77,7 +77,7 @@ class MemeService {
         } catch (errors) {
             return {
                 code: 500,
-                errors: errors.array(),
+                error: errors.array(),
             };
         }
     }
@@ -103,7 +103,7 @@ class MemeService {
         } catch (errors) {
             return {
                 code: 500,
-                errors: errors.array(),
+                error: errors.array(),
             };
         }
     }

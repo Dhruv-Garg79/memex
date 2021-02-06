@@ -30,7 +30,7 @@ class MemeController {
     async insert(req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() });
+            return res.status(422).json({ error: errors.array() });
         }
 
         const meme = await this.service.insert({
@@ -51,7 +51,7 @@ class MemeController {
     async update(req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() });
+            return res.status(422).json({ error: errors.array() });
         }
 
         const updatedMeme = {};
