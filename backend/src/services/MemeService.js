@@ -11,7 +11,10 @@ class MemeService {
 
     async getAll() {
         try {
-            const memes = await MemeModal.findAll();
+            const memes = await MemeModal.findAll({
+                order: [["createdAt", "DESC"]],
+                limit: 100,
+            });
             return memes;
         } catch (errors) {
             return {
