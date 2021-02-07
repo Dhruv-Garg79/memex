@@ -1,4 +1,4 @@
-import { sequelize } from "../../config/database";
+import { sequelize } from "../config/database";
 
 const meme = (sequelize, type) => {
     const Meme = sequelize.define("meme", {

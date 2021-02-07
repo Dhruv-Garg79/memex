@@ -19,6 +19,6 @@ const sequelize = new Sequelize(
     }
 );
 
-const MemeModal = sequelize.import("../src/models/meme.js");
+const MemeModal = sequelize.import("../models/meme.js");
 
 export { sequelize, MemeModal };

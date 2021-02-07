@@ -1,4 +1,4 @@
-import { MemeModal } from "../../config/database";
+import { MemeModal } from "../config/database";
 
 class MemeService {
     constructor() {

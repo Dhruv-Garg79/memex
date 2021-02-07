@@ -4,8 +4,11 @@
   "description": "A backend app for Memes",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
-    "dev-start": "clear; nodemon --exec babel-node index.js"
+    "start": "npm run build && node ./build/index.js",
+    "dev-start": "clear; nodemon --exec babel-node index.js",
+    "build": "npm run clean && npm run build-babel",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s"
   },
   "keywords": [
     "Meme"
@@ -13,6 +16,7 @@
   "author": "Dhruv Garg",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.12.13",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -23,8 +27,10 @@
     "sequelize": "^5.22.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.13",
     "@babel/node": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.15",
     "@babel/preset-env": "^7.12.13",
     "babel-loader": "^8.2.2",
     "nodemon": "^2.0.7"

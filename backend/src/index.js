@@ -8,3 +8,5 @@ sequelize.sync().then(() => {
         console.log(`app running on port ${PORT}`);
     });
 });
+
+// git subtree push --prefix backend heroku master
