@@ -1,7 +1,7 @@
 import { sequelize } from "./config/database";
 import server from "./config/server";
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 sequelize.sync().then(() => {
     server.listen(PORT, () => {
