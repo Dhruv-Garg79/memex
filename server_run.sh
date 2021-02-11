@@ -6,4 +6,5 @@ cd backend
 
 npm install
 
-npm run
+npm run start_dev
+
