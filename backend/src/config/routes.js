@@ -1,8 +1,8 @@
 import { oneOf, param, query } from "express-validator";
 import MemeController from "../controllers/MemeController";
 
+//maps in-coming requests to the controller function with input validation
 export default (server) => {
-    // all meme routes with input validation
     server.post(
         "/memes",
         [

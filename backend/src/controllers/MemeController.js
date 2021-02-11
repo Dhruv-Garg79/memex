@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 import MemeService from "../services/MemeService";
 
+// this controller glues everything together, service and the routes
 class MemeController {
     constructor(service) {
         this.service = service;

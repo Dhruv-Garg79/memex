@@ -1,5 +1,6 @@
 import { MemeModal } from "../config/database";
 
+// This service handles all the database operations and business logic of the app
 class MemeService {
     constructor() {
         this.getAll = this.getAll.bind(this);

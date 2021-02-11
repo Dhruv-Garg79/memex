@@ -2,6 +2,7 @@ import Sequelize from "sequelize";
 require('dotenv').config();
 console.log(process.env.DATABASE);
 
+// setup and connect to the database
 const sequelize = new Sequelize(
     process.env.DATABASE,
     process.env.DATABASE_USER,
