@@ -96,11 +96,14 @@ class _MemeScreenState extends State<MemeScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             RaisedButton(
-              child: Text(
-                'Create Meme',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Create Meme',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
               ),
               onPressed: () {

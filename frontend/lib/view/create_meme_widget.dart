@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:frontend/model/meme_modal.dart';
 import 'package:frontend/provider/meme_provider.dart';
+import 'package:frontend/utils/helper.dart';
 import 'package:frontend/widgets/loader.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +28,10 @@ class _CreateMemeWidgetState extends State<CreateMemeWidget> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: _loading
-          ? Loader()
+          ? SizedBox(
+              height: 300,
+              child: Loader(),
+            )
           : Form(
               key: _formKey,
               child: ListView(
@@ -82,11 +85,14 @@ class _CreateMemeWidgetState extends State<CreateMemeWidget> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       ElevatedButton(
-                        child: Text(
-                          widget.update ? 'Update Meme' : 'Submit Meme',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            widget.update ? 'Update Meme' : 'Submit Meme',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                         onPressed: _submit,
@@ -123,15 +129,7 @@ class _CreateMemeWidgetState extends State<CreateMemeWidget> {
     final res = await Provider.of<MemeProvider>(context, listen: false)
         .createMeme(meme);
 
-    Fluttertoast.showToast(
-      msg: res ? "Meme added successfully" : "Meme not added",
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: res ? Colors.green : Colors.red,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
-
+    Helper.showToast(res ? "Meme added successfully" : "Meme not added", res);
     Navigator.of(context).pop();
   }
 

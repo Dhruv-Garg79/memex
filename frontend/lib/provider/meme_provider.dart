@@ -43,11 +43,12 @@ class MemeProvider extends ChangeNotifier {
         caption: meme.caption ?? original.caption,
         url: meme.url ?? original.url,
       );
+      notifyListeners();
       return true;
     }
   }
 
-  Future deleteMeme(MemeModal meme, int pos) async {
+  Future<bool> deleteMeme(MemeModal meme, int pos) async {
     final res = await apiProvider.deleteMeme(meme.id);
     if (res.error.isNotEmpty) {
       return false;

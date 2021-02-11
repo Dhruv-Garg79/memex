@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:frontend/utils/app_logger.dart';
 import 'package:frontend/utils/global.dart';
+import 'package:frontend/utils/helper.dart';
 
 class ApiClient {
   static ApiClient _instanse;
@@ -66,13 +67,7 @@ class ApiClient {
       }
     }
 
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      fontSize: 16.0,
-    );
+    Helper.showToast(message, false);
 
     return dioError.response;
   }
