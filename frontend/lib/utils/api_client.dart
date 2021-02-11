@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:frontend/utils/app_logger.dart';
 import 'package:frontend/utils/global.dart';
 import 'package:frontend/utils/helper.dart';
