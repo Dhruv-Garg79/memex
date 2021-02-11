@@ -53,6 +53,7 @@ class MemeProvider extends ChangeNotifier {
       return false;
     } else {
       _memes.removeAt(pos);
+      notifyListeners();
       return true;
     }
   }

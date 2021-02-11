@@ -8,6 +8,10 @@ import 'package:provider/provider.dart';
 import '../app_theme.dart';
 
 class CreateMemeWidget extends StatefulWidget {
+  final bool update;
+
+  const CreateMemeWidget({Key key, this.update = false}) : super(key: key);
+
   @override
   _CreateMemeWidgetState createState() => _CreateMemeWidgetState();
 }
@@ -21,17 +25,16 @@ class _CreateMemeWidgetState extends State<CreateMemeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: _loading
-            ? Loader()
-            : Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: _loading
+          ? Loader()
+          : Form(
+              key: _formKey,
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  if (!widget.update)
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Creator Name',
@@ -45,56 +48,57 @@ class _CreateMemeWidgetState extends State<CreateMemeWidget> {
                       },
                       controller: _name,
                     ),
-                    SizedBox(height: 16),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Caption',
-                        border: OutlineInputBorder(),
-                      ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Caption is required";
-                        }
-                        return null;
-                      },
-                      controller: _caption,
+                  if (!widget.update) SizedBox(height: 16),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Caption',
+                      border: OutlineInputBorder(),
                     ),
-                    SizedBox(height: 16),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Meme Image Url',
-                        border: OutlineInputBorder(),
-                      ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Url is required";
-                        }
-                        if (!Uri.parse(value).isAbsolute) return "Invalid URL";
-                        return null;
-                      },
-                      controller: _url,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Caption is required";
+                      }
+                      return null;
+                    },
+                    controller: _caption,
+                  ),
+                  SizedBox(height: 16),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Meme Image Url',
+                      border: OutlineInputBorder(),
                     ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        RaisedButton(
-                          child: Text(
-                            'Submit Meme',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Url is required";
+                      }
+                      if (!Uri.parse(value).isAbsolute) return "Invalid URL";
+                      return null;
+                    },
+                    controller: _url,
+                  ),
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        child: Text(
+                          widget.update ? 'Update Meme' : 'Submit Meme',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
                           ),
-                          onPressed: _submit,
-                          color: AppTheme.primaryColor,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                        onPressed: _submit,
+                        style: ElevatedButton.styleFrom(
+                          primary: AppTheme.primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-      ),
+            ),
     );
   }
 
@@ -102,12 +106,16 @@ class _CreateMemeWidgetState extends State<CreateMemeWidget> {
     if (!_formKey.currentState.validate()) {
       return;
     }
-
     final meme = MemeModal(
       name: _name.text,
       caption: _caption.text,
       url: _url.text,
     );
+
+    if (widget.update) {
+      Navigator.of(context).pop(meme);
+      return;
+    }
 
     setState(() {
       _loading = true;

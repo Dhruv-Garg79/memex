@@ -48,10 +48,11 @@ class MemeApiProvider {
 
   Future<Response<String>> updateMeme(MemeModal meme) async {
     try {
-      final params = {};
+      print('object asd');
+      final Map<String, dynamic> params = {};
       if (meme.caption != null) params['caption'] = meme.caption;
       if (meme.url != null) params['url'] = meme.url;
-
+      print('object asd');
       final path = "${Global.baseurl}/memes/${meme.id}";
       final response = await ApiClient.getInstance().patch(
         path,
@@ -59,8 +60,10 @@ class MemeApiProvider {
       );
 
       if (response.statusCode == 200) {
+        print('object asd');
         return Response(response.data['message']);
       } else {
+        print('object asd as');
         return Response.withError(response.data['error'].toString());
       }
     } on Exception catch (e) {

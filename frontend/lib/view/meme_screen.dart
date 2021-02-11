@@ -61,9 +61,16 @@ class _MemeScreenState extends State<MemeScreen> {
   void _showCreateMemeDialog() {
     showDialog(
       context: context,
-      builder: (_) {
-        return CreateMemeWidget();
-      },
+      builder: (context) => Dialog(
+        insetPadding: const EdgeInsets.all(0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: CreateMemeWidget(),
+        ),
+      ),
     );
   }
 
