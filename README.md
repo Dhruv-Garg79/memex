@@ -1,3 +1,6 @@
+# XMeme
+This project was build under Crio Winter of Doing Stage-2 Phase-B. This is a full-stack application. A user can create, read, update and delete memes in this app.
+
 ## Tech Stack
 Frontend - Flutter web
 
@@ -16,6 +19,7 @@ Database - Posgress
 - widgets folder : contains common widgets.
 - app_theme : contains theming and styles of the app.
 - main.dart : This starts the app. It is like index.js.
+- The website is responsive on different screen sizes.
 
 ### Backend
 - MemeService : This service handles all the database operations and business logic of the app
@@ -33,4 +37,4 @@ Backend and database deployed on heroku - http://xmeme-backend-dhruv.herokuapp.c
 1. HTTPS version for both frontend and backend
 2. Delete and update meme APIs and option for same in frontend.
 3. Swagger documentation available on `http://localhost:8080/swagger-ui/`
-
+4. Dockerized solution using docker-compose.yml
