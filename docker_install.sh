@@ -3,6 +3,8 @@
 if [ ! -x /var/lib/docker ]; then
 echo "INSTALLING docker"
 
+apt update
+
 #install docker dependencies 
 apt install apt-transport-https ca-certificates curl software-properties-common -y
 echo

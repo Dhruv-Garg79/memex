@@ -1,0 +1,28 @@
+version: "3.5"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    command: npm run start_dev
+    networks:
+      - proxynet
+    environment:
+      DATABASE_HOST: postgres
+      
+  postgres:
+    image: postgres:alpine
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: meme
+    networks:
+      - proxynet
+      
+networks:
+  proxynet:
+    name: custom_network
+    external: true
+    

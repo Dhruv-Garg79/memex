@@ -6,14 +6,7 @@
 # cd to the cloned repo directory
 
 
-# Create the container image, this will use the Dockerfile
-
-docker build -t xmeme_app .
-
-# Run the app container on port 8081
-
-docker run -d -p 8081:8081 xmeme_app
-
+docker-compose up -d
 # Run sleep.sh
 
 chmod +x sleep.sh
@@ -23,18 +16,12 @@ chmod +x sleep.sh
 
 # Execute the POST /memes endpoint using curl
 
-curl --location --request POST 'http://<Server_URL>/memes' \
-
+curl --location --request POST 'http://localhost:8081/memes' \
 --header 'Content-Type: application/json' \
-
 --data-raw '{
-
 "name": "xyz",
-
 "url": "abc.com",
-
 "caption": "This is a meme"
-
 }'
 
 
