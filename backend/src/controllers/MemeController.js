@@ -35,9 +35,9 @@ class MemeController {
         }
 
         const meme = await this.service.insert({
-            name: req.query.name,
-            caption: req.query.caption,
-            url: req.query.url,
+            name: req.body.name,
+            caption: req.body.caption,
+            url: req.body.url,
         });
 
         if (meme.error) {

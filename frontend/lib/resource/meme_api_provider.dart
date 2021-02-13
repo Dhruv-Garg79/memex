@@ -32,7 +32,7 @@ class MemeApiProvider {
       final path = "${Global.baseurl}/memes";
       final response = await ApiClient.getInstance().post(
         path,
-        queryParameters: meme.toMap(),
+        data: meme.toMap(),
       );
 
       if (response.statusCode == 200) {

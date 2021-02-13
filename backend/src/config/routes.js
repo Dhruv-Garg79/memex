@@ -1,4 +1,4 @@
-import { oneOf, param, query } from "express-validator";
+import { body, oneOf, param, query } from "express-validator";
 import MemeController from "../controllers/MemeController";
 
 //maps in-coming requests to the controller function with input validation
@@ -6,9 +6,9 @@ export default (server) => {
     server.post(
         "/memes",
         [
-            query("name").exists(),
-            query("url").isURL(),
-            query("caption").exists(),
+            body("name").exists(),
+            body("url").isURL(),
+            body("caption").exists(),
         ],
         MemeController.insert
     );
