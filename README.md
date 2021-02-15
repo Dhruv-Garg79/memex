@@ -29,9 +29,9 @@ Database - Posgress
 - ES6 syntax is used and compiled by babel for deployment.
 
 ### Deployment
-Frontend deployed on netlify - http://memex-dhruv.netlify.app/
+Frontend deployed on netlify - https://memex-dhruv.netlify.app/
 
-Backend and database deployed on heroku - http://xmeme-backend-dhruv.herokuapp.com/
+Backend and database deployed on heroku - https://xmeme-backend-dhruv.herokuapp.com/
 
 ### Additional tasks attempted
 1. HTTPS version for both frontend and backend
